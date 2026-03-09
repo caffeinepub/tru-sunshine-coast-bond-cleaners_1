@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { SUBURBS } from "../data/suburbs";
 
 const faqs = [
   {
@@ -304,6 +305,53 @@ export default function Home() {
           >
             Get Your Free Quote
           </Link>
+        </div>
+      </section>
+
+      {/* Areas We Serve */}
+      <section id="areas-we-serve" className="py-16 bg-gray-50">
+        <div className="max-w-6xl mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-3">
+              Bond Cleaning Across the Sunshine Coast
+            </h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">
+              We service all major suburbs on the Sunshine Coast. Click your
+              suburb below to find out more about bond cleaning in your area.
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+            {SUBURBS.map((suburb, i) => (
+              <Link
+                key={suburb.slug}
+                data-ocid={`suburbs.item.${i + 1}`}
+                to={`/suburbs/${suburb.slug}`}
+                className="group bg-white border border-gray-200 rounded-2xl p-5 text-center hover:border-teal-400 hover:shadow-lg hover:bg-teal-50 transition-all"
+              >
+                <div className="text-2xl mb-2">📍</div>
+                <div className="font-bold text-gray-900 group-hover:text-teal-700 transition-colors text-sm leading-tight">
+                  {suburb.name}
+                </div>
+                <div className="text-xs text-gray-500 mt-1 group-hover:text-teal-600 transition-colors">
+                  Bond cleaning in {suburb.name}
+                </div>
+              </Link>
+            ))}
+          </div>
+          <div className="text-center mt-10">
+            <p className="text-gray-600 text-sm">
+              Don't see your suburb?{" "}
+              <a
+                href="https://wa.me/61488841883"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-teal-600 font-semibold hover:underline"
+              >
+                Contact us on WhatsApp
+              </a>{" "}
+              — we cover the whole Sunshine Coast region.
+            </p>
+          </div>
         </div>
       </section>
 

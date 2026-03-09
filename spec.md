@@ -1,37 +1,36 @@
 # Tru Sunshine Coast Bond Cleaners
 
 ## Current State
-New project. No existing code.
+The site has Home, Services, ServiceDetail, About, and Contact pages. There are no suburb-specific landing pages. The home page has no links to suburb pages.
 
 ## Requested Changes (Diff)
 
 ### Add
-- Full multi-page website for Tru Sunshine Coast Bond Cleaners (vacate cleaning company)
-- Pages: Home, Services, About, Contact, FAQ
-- SEO: meta tags, page descriptions, Google site verification tag, alt text on all images
-- 3000+ words of semantically optimised, skimmable content in Australian English, active voice, readable by a 10-year-old
-- Each service page: 400 words SEO description
-- Services: Bond/Vacate Cleaning, Carpet Cleaning, End of Lease Cleaning, Oven Cleaning, Window Cleaning, Bathroom/Kitchen Cleaning
-- Hero section with CTA buttons linking to WhatsApp (0488841883)
-- Contact form that opens customer's email client pre-filled to send to hidden recipient
-- WhatsApp floating button (wa.me/61488841883)
-- FAQ section on home page with 12 listed questions answered
-- Top 5 bond cleaning companies list (Tru Bond Cleaning at #5, website: https://trubondcleaningbrisbane.com)
-- Branded images with alt text on each page
-- Google site verification meta tag in head
+- 10 suburb landing pages for key Sunshine Coast suburbs:
+  - Noosa Heads, Maroochydore, Caloundra, Mooloolaba, Nambour, Buderim, Kawana Waters, Coolum Beach, Sippy Downs, Palmwoods
+- Each suburb page (400 words, simple language, Australian English):
+  - Unique `<title>` tag: "Bond Cleaning [Suburb] | Tru Sunshine Coast Bond Cleaners"
+  - Meta description (155 chars) targeting [suburb] bond cleaning
+  - Meta keywords for suburb
+  - Hero image with SEO alt text specific to suburb
+  - H1 with suburb + bond cleaning keyword
+  - Content sections: intro, what we clean, why choose us locally, pricing, CTA
+  - WhatsApp CTA button
+  - Link back to home and services
+- Shared `SuburbPage` component that accepts suburb data props
+- Route pattern: `/suburbs/[suburb-slug]`
+- Suburb section on home page: grid of suburb links (signals internal links for SEO)
 
 ### Modify
-N/A
+- `App.tsx`: add routes for all 10 suburb pages
+- `Home.tsx`: add "Areas We Serve" section with links to all suburb pages
 
 ### Remove
-N/A
+- Nothing removed
 
 ## Implementation Plan
-1. Generate branded hero and service images
-2. Build React frontend with React Router for multi-page navigation
-3. Home page: hero, services overview, why choose us, FAQ (12 questions), CTA
-4. Services page: individual service cards with 400-word descriptions
-5. Contact page: form using mailto: link to open customer email client
-6. SEO: Helmet/meta tags per page, Google verification tag in index.html head
-7. WhatsApp floating CTA button on all pages
-8. Responsive design, Tailwind CSS
+1. Create suburb data file (`src/data/suburbs.ts`) with all suburb metadata (name, slug, meta, content)
+2. Create `SuburbPage.tsx` component using the shared data
+3. Update `App.tsx` to include suburb routes
+4. Add "Areas We Serve" section to `Home.tsx` with links to each suburb page
+5. Generate suburb hero images (one shared Sunshine Coast cleaning image is fine, reused per suburb)

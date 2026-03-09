@@ -5,6 +5,7 @@ import Contact from "./pages/Contact";
 import Home from "./pages/Home";
 import ServiceDetail from "./pages/ServiceDetail";
 import Services from "./pages/Services";
+import SuburbPage from "./pages/SuburbPage";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
           <Route path="services/:serviceId" element={<ServiceDetail />} />
           <Route path="about" element={<About />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="suburbs/:slug" element={<SuburbPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
